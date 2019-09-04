@@ -29,73 +29,65 @@ private boolean valid=true;
 
 public boolean RomanChecker(String roman){
     String Roman = roman.toUpperCase();
-    splittedRoman = Roman.split("");
-    int counter=0;
-   
-    System.out.println(Roman.length());
-    for (int i = Roman.length()-1;i >= 0; i--){
-        System.out.println("==================================");
-        
-       if(RomanNumeral.containsKey(splittedRoman[i])){ 
-           System.out.println("masukcontains");
-        if (i-1<0){
+//    splittedRoman = Roman.split("");
+//    int counter=0;
+//   
+//    System.out.println(Roman.length());
+//    for (int i = Roman.length()-1;i >= 0; i--){
+//        System.out.println("==================================");
+//       if(RomanNumeral.containsKey(splittedRoman[i])){ 
+//           System.out.println("masukcontains");
+//        if (i-1<0){
 //            System.out.println(RomanNumeral.get(splittedRoman[i])+" "+RomanNumeral.get(splittedRoman[i+1]));
 //            
 //            if(RomanNumeral.get(splittedRoman[i])>RomanNumeral.get(splittedRoman[i+1])){System.out.println("success");break;}
 //            
 //            else if(splittedRoman[i].equals("I")||splittedRoman[i].equals("X")||splittedRoman[i].equals("C")||splittedRoman[i].equals("M")){
-            
-//            if(i<Roman.length()-2)
+//            counter=counter+2;
+//            System.out.println("counter: "+counter);
+//            if (counter<=3){
+//            System.out.println("success");break;}
+//            else {System.out.println("why"); valid=false; break;}
+//            }
+//        }
+//        else if(RomanNumeral.get(splittedRoman[i])<=RomanNumeral.get(splittedRoman[i-1])){
+//            System.out.println("masukkurleb");
+//            if(splittedRoman[i].equals("I")||splittedRoman[i].equals("X")||splittedRoman[i].equals("C")||splittedRoman[i].equals("M")){
+//                System.out.println("masuk iterasi 1");
+//                if(i<Roman.length()-2)
 //                {System.out.println("masuk -2");
 //                    if(RomanNumeral.get(splittedRoman[i])<RomanNumeral.get(splittedRoman[i+2])){System.out.println("rekt"); valid=false; break;}
 //                else if(i<Roman.length()-3){ System.out.println("masuk -3 | "+RomanNumeral.get(splittedRoman[i+3])+" "+RomanNumeral.get(splittedRoman[i+3]));
 //                    if(RomanNumeral.get(splittedRoman[i])<RomanNumeral.get(splittedRoman[i+3])){System.out.println("rekt"); valid=false; break;}}}
 //                else if(Roman.length()-1!=i && RomanNumeral.get(splittedRoman[i])>RomanNumeral.get(splittedRoman[i+1])){
 //                counter=1;
-//                } else {
-                
-//            if (counter<3){
-//                 counter=counter+1;
-//            System.out.println("counter: "+counter);
-//            System.out.println("success");break;}
+//                } else {if (counter<3){
+//                    counter=counter+1;
+//                    System.out.println("counter"+counter);
+//                } else {System.out.println("counter: "+counter);valid=false; break;}}
+//                
+//            } else if(splittedRoman[i].equals("D")||splittedRoman[i].equals("V")||splittedRoman[i].equals("L")){
+//                System.out.println("masuk else");
+//               if(Roman.length()-1!=i && RomanNumeral.get(splittedRoman[i])>RomanNumeral.get(splittedRoman[i+1])){
+//                counter=0;
+//                } else {if (counter<0){
+//                    counter=counter+1;
+//                    System.out.println("counter"+counter);
+//                } else {System.out.println("break1");valid=false; break;}}
+//                
+//            }else{System.out.println("breakelse");valid=false; break; }
 //            
-//            else {System.out.println("why"); valid=false; break;}
-//            }
-        }
-        else if(RomanNumeral.get(splittedRoman[i])<=RomanNumeral.get(splittedRoman[i-1])){
-            System.out.println("masukkurleb");
-            if(splittedRoman[i].equals("I")||splittedRoman[i].equals("X")||splittedRoman[i].equals("C")||splittedRoman[i].equals("M")){
-                System.out.println("masuk iterasi 1");
-                counter=counter+1; 
-                if(Roman.length()-1!=i && RomanNumeral.get(splittedRoman[i])>RomanNumeral.get(splittedRoman[i+1])){
-                counter=0;
-                }
-                else {if (counter<3){
-                    
-                    System.out.println("counter"+counter);
-                } else {System.out.println("counter: "+counter);valid=false; break;}}
-                
-            } else if(splittedRoman[i].equals("D")||splittedRoman[i].equals("V")||splittedRoman[i].equals("L")){
-                System.out.println("masuk else");
-               if(Roman.length()-1!=i && RomanNumeral.get(splittedRoman[i])>RomanNumeral.get(splittedRoman[i+1])){
-                counter=0;
-                } else {if (counter<0){
-                    counter=counter+1;
-                    System.out.println("counter"+counter);
-                } else {System.out.println("break1");valid=false; break;}}
-                
-            }else{System.out.println("breakelse");valid=false; break; }
-            
-        } else {
-            
-            if(RomanNumeral.get(splittedRoman[i])>RomanNumeral.get(splittedRoman[i-1]) && splittedRoman[i-1].equals("I")||splittedRoman[i-1].equals("X")||splittedRoman[i-1].equals("C")){
-            System.out.println(splittedRoman[i]+" "+RomanNumeral.get(splittedRoman[i]));
-            System.out.println(splittedRoman[i-1]+" "+RomanNumeral.get(splittedRoman[i-1]));
-        } else {System.out.println("break2");valid=false; break;}}
-        
-       } else { System.out.println("break3");valid=false; break;}
-}
-    
+//        } else {
+//            
+//            if(RomanNumeral.get(splittedRoman[i])>RomanNumeral.get(splittedRoman[i-1]) && splittedRoman[i-1].equals("I")||splittedRoman[i-1].equals("X")||splittedRoman[i-1].equals("C")){
+//            System.out.println(splittedRoman[i]+" "+RomanNumeral.get(splittedRoman[i]));
+//            System.out.println(splittedRoman[i-1]+" "+RomanNumeral.get(splittedRoman[i-1]));
+//        } else {System.out.println("break2");valid=false; break;}}
+//        
+//       } else { System.out.println("break3");valid=false; break;}
+//}
+//    
+        valid=Roman.matches("^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
     return valid;
 }
   
