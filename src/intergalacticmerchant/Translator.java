@@ -13,28 +13,20 @@ public class Translator {
    public HashMap<String, String> Language = new HashMap<String, String>();
    private boolean valid=true;
    
-   public boolean LangInput(String Alien, String Roman){
-       if(Language.containsKey(Alien)){
-       System.out.println("Sorry, that language is already taken.");
+   public boolean LangInput(String Alien, String Roman){ //to add language into alien-roman number dictionary
+       if(Language.containsKey(Alien)){     //if the alien number is already registered
+       System.out.println("Sorry, that language is already taken");
        System.out.println("Here's the list:");
        Language.entrySet().forEach(map->{
     System.out.println(map.getKey() + " - " + map.getValue());  
  });
        valid=false;
        }
-       else if (Language.containsValue(Roman)){
-       System.out.println("Sorry, that roman number is already taken.");
-       System.out.println("Here's the list:");
-       Language.entrySet().forEach(map->{
-    System.out.println(map.getKey() + " - " + map.getValue());  
-              });
-       valid=false;
-       }
-       else {Language.put(Alien, Roman); valid=true;}
+       else {Language.put(Alien, Roman); valid=true;} //add language to dictionary
        return valid;
    }
    
-   public HashMap<String, String> getLangMap() {
+   public HashMap<String, String> getLangMap() { //to get dictionary hashmap
          return Language;
     }
 }

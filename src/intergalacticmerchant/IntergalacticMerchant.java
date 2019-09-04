@@ -21,22 +21,28 @@ public class IntergalacticMerchant {
         InputProcessor IP = new InputProcessor();
         String input;
         
-        while(true){
-        input = sc.nextLine(); 
-        System.out.println(IP.ProcessInput(input));
-        }
-//        System.out.println(IP.ProcessInput("glob is I"));
-//        System.out.println(IP.ProcessInput("prok is V"));
-//        System.out.println(IP.ProcessInput("pish is X"));
-//        System.out.println(IP.ProcessInput("tegj is L"));
-//        System.out.println(IP.ProcessInput("glob glob Silver is 34 Credits"));
-//        System.out.println(IP.ProcessInput("glob prok Gold is 57800 Credits"));
-//        System.out.println(IP.ProcessInput("pish pish Iron is 3910 Credits"));
-//        System.out.println(IP.ProcessInput("how much is pish tegj glob glob ?"));
-//        System.out.println(IP.ProcessInput("how many Credits is glob prok Silver ?"));
-//        System.out.println(IP.ProcessInput("how many Credits is glob prok Gold ?"));
-//        System.out.println(IP.ProcessInput("how many Credits is glob prok Iron ?"));
-//        System.out.println(IP.ProcessInput("how much wood could a woodchuck chuck if a woodchuck could chuck wood ?"));
+//        while(true){
+//        try {  
+//            input = sc.nextLine(); 
+//            System.out.println(IP.ProcessInput(input));   //to write input
+//         } catch(Exception e){  
+//             System.out.println("Exception Occured in Input Processing.");
+//             } 
+// 
+//        }
+        /*These lines are for all-at-once execution*/
+        System.out.println(IP.ProcessInput("glob is I"));
+        System.out.println(IP.ProcessInput("prok is V"));
+        System.out.println(IP.ProcessInput("pish is X"));
+        System.out.println(IP.ProcessInput("tegj is L"));
+        System.out.println(IP.ProcessInput("glob glob Silver is 34 Credits"));
+        System.out.println(IP.ProcessInput("glob prok Gold is 57800 Credits"));
+        System.out.println(IP.ProcessInput("pish pish Iron is 3910 Credits"));
+        System.out.println(IP.ProcessInput("how much is pish tegj glob glob ?"));
+        System.out.println(IP.ProcessInput("how many Credits is glob prok Silver ?"));
+        System.out.println(IP.ProcessInput("how many Credits is glob prok Gold ?"));
+        System.out.println(IP.ProcessInput("how many Credits is glob prok Iron ?"));
+        System.out.println(IP.ProcessInput("how much wood could a woodchuck chuck if a woodchuck could chuck wood ?"));
 
         
     }

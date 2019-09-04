@@ -13,7 +13,7 @@ import java.util.Set;
  */
 public class RomanConverter {
    
-public HashMap<String, Integer> RomanNumeral = new HashMap<String, Integer>() {
+public HashMap<String, Integer> RomanNumeral = new HashMap<String, Integer>() { //roman-arabic numbers list
 	{
 		put("I", 1);
                 put("V", 5);
@@ -27,86 +27,42 @@ private String [] splittedRoman;
 private boolean valid=true;    
 
 
-public boolean RomanChecker(String roman){
+public boolean RomanChecker(String roman){ //to check validity of roman number
     String Roman = roman.toUpperCase();
-//    splittedRoman = Roman.split("");
-//    int counter=0;
-//   
-//    System.out.println(Roman.length());
-//    for (int i = Roman.length()-1;i >= 0; i--){
-//        System.out.println("==================================");
-//       if(RomanNumeral.containsKey(splittedRoman[i])){ 
-//           System.out.println("masukcontains");
-//        if (i-1<0){
-//            System.out.println(RomanNumeral.get(splittedRoman[i])+" "+RomanNumeral.get(splittedRoman[i+1]));
-//            
-//            if(RomanNumeral.get(splittedRoman[i])>RomanNumeral.get(splittedRoman[i+1])){System.out.println("success");break;}
-//            
-//            else if(splittedRoman[i].equals("I")||splittedRoman[i].equals("X")||splittedRoman[i].equals("C")||splittedRoman[i].equals("M")){
-//            counter=counter+2;
-//            System.out.println("counter: "+counter);
-//            if (counter<=3){
-//            System.out.println("success");break;}
-//            else {System.out.println("why"); valid=false; break;}
-//            }
-//        }
-//        else if(RomanNumeral.get(splittedRoman[i])<=RomanNumeral.get(splittedRoman[i-1])){
-//            System.out.println("masukkurleb");
-//            if(splittedRoman[i].equals("I")||splittedRoman[i].equals("X")||splittedRoman[i].equals("C")||splittedRoman[i].equals("M")){
-//                System.out.println("masuk iterasi 1");
-//                if(i<Roman.length()-2)
-//                {System.out.println("masuk -2");
-//                    if(RomanNumeral.get(splittedRoman[i])<RomanNumeral.get(splittedRoman[i+2])){System.out.println("rekt"); valid=false; break;}
-//                else if(i<Roman.length()-3){ System.out.println("masuk -3 | "+RomanNumeral.get(splittedRoman[i+3])+" "+RomanNumeral.get(splittedRoman[i+3]));
-//                    if(RomanNumeral.get(splittedRoman[i])<RomanNumeral.get(splittedRoman[i+3])){System.out.println("rekt"); valid=false; break;}}}
-//                else if(Roman.length()-1!=i && RomanNumeral.get(splittedRoman[i])>RomanNumeral.get(splittedRoman[i+1])){
-//                counter=1;
-//                } else {if (counter<3){
-//                    counter=counter+1;
-//                    System.out.println("counter"+counter);
-//                } else {System.out.println("counter: "+counter);valid=false; break;}}
-//                
-//            } else if(splittedRoman[i].equals("D")||splittedRoman[i].equals("V")||splittedRoman[i].equals("L")){
-//                System.out.println("masuk else");
-//               if(Roman.length()-1!=i && RomanNumeral.get(splittedRoman[i])>RomanNumeral.get(splittedRoman[i+1])){
-//                counter=0;
-//                } else {if (counter<0){
-//                    counter=counter+1;
-//                    System.out.println("counter"+counter);
-//                } else {System.out.println("break1");valid=false; break;}}
-//                
-//            }else{System.out.println("breakelse");valid=false; break; }
-//            
-//        } else {
-//            
-//            if(RomanNumeral.get(splittedRoman[i])>RomanNumeral.get(splittedRoman[i-1]) && splittedRoman[i-1].equals("I")||splittedRoman[i-1].equals("X")||splittedRoman[i-1].equals("C")){
-//            System.out.println(splittedRoman[i]+" "+RomanNumeral.get(splittedRoman[i]));
-//            System.out.println(splittedRoman[i-1]+" "+RomanNumeral.get(splittedRoman[i-1]));
-//        } else {System.out.println("break2");valid=false; break;}}
-//        
-//       } else { System.out.println("break3");valid=false; break;}
-//}
-//    
-        valid=Roman.matches("^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
+
+      try{
+        valid=Roman.matches("^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$"); //checking the validity with matches method
+      }
+      catch (Exception e){
+         System.out.println("Exception Occured in RomanChecker.");
+         System.out.println(e);
+      }
+        
     return valid;
 }
   
-public int Convert(String roman) {
+public int Convert(String roman) { //to convert roman into arabic number
         int result = 0;
-        String Roman = roman.toUpperCase(); //case-insensitive
+        String Roman = roman.toUpperCase(); 
         splittedRoman = Roman.split("");
-        for (int i = 0; i < Roman.length() - 1; i++) {//loop over all but the last character
-            if (RomanNumeral.get(splittedRoman[i]) < RomanNumeral.get(splittedRoman[i+1])) {
+        try{
+        for (int i = 0; i < Roman.length()-1; i++) {
+            if (RomanNumeral.get(splittedRoman[i]) < RomanNumeral.get(splittedRoman[i+1])) { //if there's substraction like IX
                 result -= RomanNumeral.get(splittedRoman[i]);
             } else {
-                result += RomanNumeral.get(splittedRoman[i]);
+                result += RomanNumeral.get(splittedRoman[i]);  //add if not a substraction case
             }
         }
-        result += RomanNumeral.get(splittedRoman[Roman.length() - 1]);
+         result += RomanNumeral.get(splittedRoman[Roman.length() - 1]); //adding the last roman number
+        } catch (Exception e){
+            System.out.println("Exception Occured in Convert.");
+           
+        }
+       
         return result;
     }
 
-public HashMap<String, Integer> getRomanMap() {
+public HashMap<String, Integer> getRomanMap() { //to transfer roman hashmap
          return RomanNumeral;
     }
   
