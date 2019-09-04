@@ -21,29 +21,13 @@ public class InputProcessorTest {
     public InputProcessorTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of ProcessInput method, of class InputProcessor.
      */
     @Test
     public void testProcessInput() {
         System.out.println("ProcessInput");
-        String Input = "";
+        String Input = "glob is I";
         InputProcessor instance = new InputProcessor();
         String expResult = "";
         String result = instance.ProcessInput(Input);

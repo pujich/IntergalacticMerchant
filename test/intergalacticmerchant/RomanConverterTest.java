@@ -22,31 +22,15 @@ public class RomanConverterTest {
     public RomanConverterTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of RomanChecker method, of class RomanConverter.
      */
     @Test
     public void testRomanChecker() {
         System.out.println("RomanChecker");
-        String roman = "";
+        String roman = "XIV";
         RomanConverter instance = new RomanConverter();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.RomanChecker(roman);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -59,9 +43,9 @@ public class RomanConverterTest {
     @Test
     public void testConvert() {
         System.out.println("Convert");
-        String roman = "";
+        String roman = "XIV";
         RomanConverter instance = new RomanConverter();
-        int expResult = 0;
+        int expResult = 14;
         int result = instance.Convert(roman);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

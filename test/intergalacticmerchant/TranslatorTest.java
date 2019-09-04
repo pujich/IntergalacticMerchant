@@ -22,32 +22,16 @@ public class TranslatorTest {
     public TranslatorTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of LangInput method, of class Translator.
      */
     @Test
     public void testLangInput() {
         System.out.println("LangInput");
-        String Alien = "";
-        String Roman = "";
+        String Alien = "glob";
+        String Roman = "I";
         Translator instance = new Translator();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.LangInput(Alien, Roman);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
