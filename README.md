@@ -16,7 +16,7 @@ For example, a command "glob is I" will be processed like:
 ### Process and Output
 The conditions set according to the command input are the determinant of what the program will do. There are 4 main functions that this program possesses. Those are:
 
-* Input an alien number and its roman counterpart into a HashMap of alien number as its key and roman number as its value to later be used as a translator. This involves Translator class as the said HashMap is located there.
+* Input an alien number and its roman counterpart into a HashMap   of alien number as its key and roman number as its value to later be used as a translator. This involves Translator class as the said HashMap is located there.
 * Input an alien number, a Goods name, and the total Credits required to calculate the price of each one of the Goods and put it into a Hashmap of Goods as its key and its price as its value. This involves Translator class to convert alien number into roman, RomanConverter class for converting roman into arabic number, and Pricing class as it contains methods necessary to calculate and inserting into the said HashMap.
 * Input "how much is" and an alien number to convert it into an arabic number and return the result. This involves Translator class to convert alien number into roman, and RomanConverter class to convert roman into arabic number.
 * Input "how many Credits is", alien number, and goods name to calculate the amount of Credits required for that amount of Goods and return the result. This involves the This involves Translator class to convert alien number into roman, and RomanConverter class to convert roman into arabic number, and Pricing class to identify what Goods is selling and calculate the Credits needed.
@@ -38,8 +38,9 @@ The conditions set according to the command input are the determinant of what th
 **InputProcessor**
 
 * String[] DicedInput
-* ProcessInput(String Input)
-* isNumber(String Char)
+* ReadInput(String)
+* ProcessInput(String)
+* isNumber(String)
 
 **Pricing**
 
@@ -56,7 +57,6 @@ The conditions set according to the command input are the determinant of what th
 * getLangMap()
 
 ## Assumptions
-* The user is expected to type an input once a time
 * The Goods the merchant sells are only Silver, Iron, and Gold.
 * The input is case sensitive
 
@@ -76,6 +76,8 @@ The said templates are as follows:
 * 3rd template will return the conversion of Alien number in form of Arabic number
 * 4th template will return the total Credits required for the Goods to be sold in respective quantity written in Alien number
 * Other than templates written above, the program will inform you that the input is unrecognizable
+* If there are unrecognizable languages, the program will ignore it
+* If the translation is not a valid roman number, the program will tell that the input is incorrect
 
 **Note that the command templates are case sensitive.**
 
@@ -92,4 +94,3 @@ how many wood could a woodchuck chuck?
 * 3rd command will return "glob glob is 2"
 * 4th command will return "glob glob Silver is 34 Credits"
 * 5th command will return "I have no idea what you are talking about"
-
