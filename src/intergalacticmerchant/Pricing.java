@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package intergalacticmerchant;
+
 import java.util.HashMap;
+
 /**
  *
  * @author Puji
@@ -24,33 +26,33 @@ public class Pricing {
             GoodsPrice.replace(Goods, Price);
             valid=true;
             System.out.println("Price has been put");
-        } else { valid=false;
-        System.out.println("Sorry, we don't sell those");
+        } else { 
+            valid=false;
+            System.out.println("Sorry, we don't sell those");
         }
+        
         return valid;
     }
     
     public HashMap<String, Double> getGoodsPriceMap() { //to transfer goods hashmap
-         return GoodsPrice;
+        return GoodsPrice;
     }
     
     public double CountCredits(String Goods, int Qty){ //to count total credits
-    try{
-    total=GoodsPrice.get(Goods)*Qty;
-    } catch(ArithmeticException e){
-        System.out.println("ArithmeticException Occured at CountCredits");
-    }
-    
-    return total;
+        try{
+            total=GoodsPrice.get(Goods)*Qty;
+        } catch(ArithmeticException e){
+            System.out.println("ArithmeticException Occured at CountCredits");
+        }
+        return total;
     }
     
     public double CountPrice(String Credits, int Qty){ //to count a single good's price
-    try{
-    total=Double.parseDouble(Credits)/Qty;
-    } catch(ArithmeticException e){
-        System.out.println("ArithmeticException Occured at CountPrice");
-    }
-    
-    return total;
+        try{
+            total=Double.parseDouble(Credits)/Qty;
+        } catch(ArithmeticException e){
+            System.out.println("ArithmeticException Occured at CountPrice");
+        }
+        return total;
     }
 }

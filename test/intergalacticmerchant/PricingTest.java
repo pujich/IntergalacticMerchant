@@ -21,7 +21,8 @@ public class PricingTest {
     
     public PricingTest() {
     }
-    
+    Pricing Pricing = new Pricing();
+    public HashMap<String, Double> Price = Pricing.getGoodsPriceMap();
     /**
      * Test of UpdatePrice method, of class Pricing.
      */
@@ -30,12 +31,11 @@ public class PricingTest {
         System.out.println("UpdatePrice");
         String Goods = "Silver";
         Double Price = 1000.0;
-        Pricing instance = new Pricing();
+        
         boolean expResult = true;
-        boolean result = instance.UpdatePrice(Goods, Price);
+        boolean result = Pricing.UpdatePrice(Goods, Price);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      
     }
 
     /**
@@ -44,12 +44,17 @@ public class PricingTest {
     @Test
     public void testGetGoodsPriceMap() {
         System.out.println("getGoodsPriceMap");
-        Pricing instance = new Pricing();
-        HashMap<String, Double> expResult = null;
-        HashMap<String, Double> result = instance.getGoodsPriceMap();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        Pricing.UpdatePrice("Silver", 10.0);
+        Pricing.UpdatePrice("Gold", 1000.0);
+        
+        assertEquals(true, Price.containsKey("Silver"));
+        assertEquals(true, Price.containsValue(10.0));
+        assertEquals(true, Price.containsKey("Gold"));
+        assertEquals(true, Price.containsValue(1000.0));
+        assertEquals(10.0, Price.get("Silver"), 0.0);
+        assertEquals(1000.0, Price.get("Gold"), 0.0);
+
     }
 
     /**
@@ -60,12 +65,10 @@ public class PricingTest {
         System.out.println("CountCredits");
         String Goods = "Silver";
         int Qty = 6;
-        Pricing instance = new Pricing();
         double expResult = 0.0;
-        double result = instance.CountCredits(Goods, Qty);
+        double result = Pricing.CountCredits(Goods, Qty);
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+     
     }
 
     /**
@@ -76,12 +79,10 @@ public class PricingTest {
         System.out.println("CountPrice");
         String Credits = "2000";
         int Qty =5;
-        Pricing instance = new Pricing();
-        double expResult = 500.0;
-        double result = instance.CountPrice(Credits, Qty);
-        assertEquals(expResult, result, 500.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        double expResult = 400.0;
+        double result = Pricing.CountPrice(Credits, Qty);
+        assertEquals(expResult, result, 0.0);
+   
     }
     
 }

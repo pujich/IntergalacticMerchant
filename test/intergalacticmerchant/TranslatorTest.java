@@ -21,21 +21,22 @@ public class TranslatorTest {
     
     public TranslatorTest() {
     }
-    
+    Translator Translator = new Translator();
+    HashMap<String, String> Words = Translator.getLangMap();
     /**
      * Test of LangInput method, of class Translator.
      */
     @Test
     public void testLangInput() {
-        System.out.println("LangInput");
-        String Alien = "glob";
-        String Roman = "I";
-        Translator instance = new Translator();
-        boolean expResult = true;
-        boolean result = instance.LangInput(Alien, Roman);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("=LangInput=");
+        
+        assertEquals(true, Translator.LangInput("glob", "I"));
+        assertEquals(Words.get("glob"), "I");
+        assertEquals(Words.containsKey("glob"), true);
+        assertEquals(false, Translator.LangInput("glob", "V"));
+        assertEquals(false, Translator.LangInput("pok", "S"));
+        assertEquals(Words.containsKey("false"), false);
+   
     }
 
     /**
@@ -43,13 +44,19 @@ public class TranslatorTest {
      */
     @Test
     public void testGetLangMap() {
-        System.out.println("getLangMap");
-        Translator instance = new Translator();
-        HashMap<String, String> expResult = null;
-        HashMap<String, String> result = instance.getLangMap();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("=getLangMap=");       
+        HashMap<String, String> result = Translator.getLangMap();
+        
+        Translator.LangInput("glob", "I");
+        Translator.LangInput("prok", "V");
+ 
+        assertEquals(true, result.containsKey("glob"));
+        assertEquals(true, result.containsKey("prok"));
+        assertEquals(true, result.containsValue("I"));
+        assertEquals(true, result.containsValue("V"));
+        assertEquals(false, result.containsKey("pesh"));
+        assertEquals(false, result.containsValue("X"));
+
     }
     
 }
