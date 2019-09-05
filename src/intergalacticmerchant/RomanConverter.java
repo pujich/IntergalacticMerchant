@@ -33,7 +33,6 @@ public class RomanConverter {
         }
         catch (Exception e){
             System.out.println("Exception Occured in RomanChecker.");
-            System.out.println(e);
         }
         return valid;
     }
@@ -53,6 +52,7 @@ public class RomanConverter {
             result += RomanNumeral.get(splittedRoman[Roman.length() - 1]); //adding the last roman number
         } catch (Exception e){
             System.out.println("Exception Occured in Convert.");
+            
         }
         return result;
     }

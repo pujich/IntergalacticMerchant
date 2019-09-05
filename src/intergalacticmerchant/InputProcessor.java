@@ -33,7 +33,7 @@ public class InputProcessor{
     private String[] DicedInput;
     private int QtyConversion;
     private double PriceResult;
-    private int i;
+    private int i=0;
 
     public String ReadInput(String Input){      //to be able to read multiple lines of input (if any)
         DicedInput = Input.split("\\s?\\r?\\n");
@@ -43,14 +43,15 @@ public class InputProcessor{
     
     private String ProcessInput(String Input){      //to recognize input sentence as command template
         DicedInput=Input.split(" ");
-        
+        Response="";
+        RomanTemp="";
+        StringTemp="";
         if (DicedInput.length==3 && DicedInput[1].equals("is")){	//for adding space-roman dictionary
-            Response="";
             Translator.LangInput(DicedInput[0], DicedInput[2]); //adding the space-roman dictionary  
 	}
 
         else if (Input.startsWith("how much is") && Input.endsWith("?")){ //for 'how much is ... ?' questions
-            Response="";
+            i=3;
             while (Words.containsKey(DicedInput[i])){	//isSpaceLanguage iteration
                 RomanTemp+=Words.get(DicedInput[i]);
                 StringTemp+=DicedInput[i]+" ";
@@ -68,7 +69,6 @@ public class InputProcessor{
         }
 
         else if (Input.startsWith("how many Credits is") && Input.endsWith("?")){   //for "how many Credits..." questions
-            Response="";
             i=4;
             while (Words.containsKey(DicedInput[i])){	//isSpaceLanguage iteration
                 RomanTemp+=Words.get(DicedInput[i]);
@@ -80,8 +80,6 @@ public class InputProcessor{
                 if(Price.containsKey(DicedInput[DicedInput.length-2])){
                     PriceResult = Pricing.CountCredits(DicedInput[i], QtyConversion); /*kali value dan hasilkonversi*/
                     Response = StringTemp+""+DicedInput[i]+" is "+RemoveZero.format(PriceResult)+" Credits";
-                    RomanTemp="";
-                    StringTemp="";
                 } 
                 else {
                     Response = "Sorry, we don't sell that"; 
@@ -116,7 +114,6 @@ public class InputProcessor{
                 Response = "Sorry, your input is incorrect";
             }
 	}
-        
         else {                                                      
             Response="I have no idea what you are talking about";    //if the input is unrecognizable
         }

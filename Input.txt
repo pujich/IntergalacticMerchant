@@ -10,7 +10,3 @@ how many Credits is glob prok Silver ?
 how many Credits is glob prok Gold ?
 how many Credits is glob prok Iron ?
 how much wood could a woodchuck chuck if a woodchuck could chuck wood ?
-
-
--if there are unrecognizable language, the program will ignore it
--if the translation is not a valid roman number, the program will tell that the input is incorrect
