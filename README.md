@@ -24,25 +24,25 @@ The conditions set according to the command input are the determinant of what th
 
 ### Classes, Notable attributes, and Methods
 
-**IntergalacticMerchant**
+**IntergalacticMerchant** - Main class
 
 * main()
 
-**Roman Converter**
+**Roman Converter** - Class that handles roman number validity check and converting it into arabic number
 
 * HashMap<String, Integer> RomanNumeral
 * RomanChecker(String)
 * Convert(String)
 * getRomanMap()
 
-**InputProcessor**
+**InputProcessor** - Class that handles and translate the input
 
 * String[] DicedInput
 * ReadInput(String)
 * ProcessInput(String)
 * isNumber(String)
 
-**Pricing**
+**Pricing** - Class that handles Goods and its price
 
 * HashMap<String, Double> GoodsPrice
 * UpdatePrice(String, Double)
@@ -50,13 +50,14 @@ The conditions set according to the command input are the determinant of what th
 * CountCredits(String, int)
 * CountPrice(String, int)
 
-**Translator**
+**Translator** - Class that handles Alien language-roman number dictionary
 
 * HashMap<String, String> Language
 * LangInput(String, String)
 * getLangMap()
 
 ## Assumptions
+* It is possible for the program to process multiple line of input
 * The Goods the merchant sells are only Silver, Iron, and Gold.
 * The input is case sensitive
 
@@ -78,6 +79,7 @@ The said templates are as follows:
 * Other than templates written above, the program will inform you that the input is unrecognizable
 * If there are unrecognizable languages, the program will ignore it
 * If the translation is not a valid roman number, the program will tell that the input is incorrect
+* If the Goods is not registered, then the program will inform you that it is not sold
 
 **Note that the command templates are case sensitive.**
 
