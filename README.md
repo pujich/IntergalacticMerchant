@@ -57,7 +57,6 @@ The conditions set according to the command input are the determinant of what th
 * getLangMap()
 
 ## Assumptions
-* The user is expected to type an input once a time
 * The Goods the merchant sells are only Silver, Iron, and Gold.
 * The input is case sensitive
 
@@ -77,6 +76,8 @@ The said templates are as follows:
 * 3rd template will return the conversion of Alien number in form of Arabic number
 * 4th template will return the total Credits required for the Goods to be sold in respective quantity written in Alien number
 * Other than templates written above, the program will inform you that the input is unrecognizable
+* If there are unrecognizable languages, the program will ignore it
+* If the translation is not a valid roman number, the program will tell that the input is incorrect
 
 **Note that the command templates are case sensitive.**
 
