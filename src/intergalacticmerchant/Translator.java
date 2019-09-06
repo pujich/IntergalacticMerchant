@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @author Puji
  */
 public class Translator {
-    public HashMap<String, String> Language = new HashMap<String, String>();
+    private HashMap<String, String> Language = new HashMap<String, String>();
     private RomanConverter RC = new RomanConverter();
     private HashMap<String, Integer> RomanNumb = RC.getRomanMap();
     private boolean valid=true;
@@ -35,7 +35,7 @@ public class Translator {
             return valid;
     }
    
-   public HashMap<String, String> getLangMap() { //to get dictionary hashmap
+    public HashMap<String, String> getLangMap() { //to get dictionary hashmap
         return Language;
-   }
+    }
 }

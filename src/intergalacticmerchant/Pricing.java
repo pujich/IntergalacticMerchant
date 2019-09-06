@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @author Puji
  */
 public class Pricing {
-    public HashMap<String, Double> GoodsPrice = new HashMap<String, Double>() { //goods-price list
+    private HashMap<String, Double> GoodsPrice = new HashMap<String, Double>() { //goods-price list
 	{
 		put("Silver", 0.0);
                 put("Gold", 0.0);

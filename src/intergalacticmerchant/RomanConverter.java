@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class RomanConverter {
    
-    public HashMap<String, Integer> RomanNumeral = new HashMap<String, Integer>() { //roman-arabic numbers list
+    private HashMap<String, Integer> RomanNumeral = new HashMap<String, Integer>() { //roman-arabic numbers list
 	{
 		put("I", 1);
                 put("V", 5);
