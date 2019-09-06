@@ -52,66 +52,103 @@ public class InputProcessor{
 
         else if (Input.startsWith("how much is") && Input.endsWith("?")){ //for 'how much is ... ?' questions
             i=3;
-            while (Words.containsKey(DicedInput[i])){	//isSpaceLanguage iteration
-                RomanTemp+=Words.get(DicedInput[i]);
-                StringTemp+=DicedInput[i]+" ";
-                i++;
+            while(i<DicedInput.length-1){	//isSpaceLanguage iteration
+                if(Words.containsKey(DicedInput[i])){
+                    RomanTemp+=Words.get(DicedInput[i]);
+                    StringTemp+=DicedInput[i]+" ";
+                    i++;
+                }
+                else {
+                    Response+="Sorry, the language "+DicedInput[i]+" hasn't been registered yet.\n";     //if the language hasn't been registered yet
+                    i++;
+                }
             }
-            if(RC.RomanChecker(RomanTemp)==true){        //check and convert roman
-                QtyConversion=RC.Convert(RomanTemp);
-                Response = StringTemp+"is "+QtyConversion;    //setting response
-                RomanTemp="";
-                StringTemp="";
-            }
-            else {
-                Response = "Sorry, your language input is incorrect"; 
+            if(!RomanTemp.equals("")){
+                if(RC.RomanChecker(RomanTemp)==true){        //check and convert roman
+                    QtyConversion=RC.Convert(RomanTemp);
+                    Response += StringTemp+"is "+QtyConversion;    //setting response
+                    RomanTemp="";
+                    StringTemp="";
+                }
+                else {
+                    Response += "Sorry, your number input is invalid";   //if the translation resulted is an invalid roman number
+                }
+            } else {
+                
             }
         }
 
         else if (Input.startsWith("how many Credits is") && Input.endsWith("?")){   //for "how many Credits..." questions
-            i=4;
-            while (Words.containsKey(DicedInput[i])){	//isSpaceLanguage iteration
-                RomanTemp+=Words.get(DicedInput[i]);
-                StringTemp+=DicedInput[i]+" ";
-                i++;
+            i=4;           
+            while(i<DicedInput.length-2){	//isSpaceLanguage iteration
+                if(Words.containsKey(DicedInput[i])){
+                    RomanTemp+=Words.get(DicedInput[i]);
+                    StringTemp+=DicedInput[i]+" ";
+                    i++;
+                }
+                else {
+                    Response += "Sorry, the language "+DicedInput[i]+" hasn't been registered yet.\n";
+                    i++;
+                }
             }
-            if(RC.RomanChecker(RomanTemp)==true){          
-                QtyConversion=RC.Convert(RomanTemp);
-                if(Price.containsKey(DicedInput[DicedInput.length-2])){
-                    PriceResult = Pricing.CountCredits(DicedInput[i], QtyConversion); /*kali value dan hasilkonversi*/
-                    Response = StringTemp+""+DicedInput[i]+" is "+RemoveZero.format(PriceResult)+" Credits";
+            if(!RomanTemp.equals("")){
+                if(RC.RomanChecker(RomanTemp)==true){          
+                    QtyConversion=RC.Convert(RomanTemp);
+                    if(Price.containsKey(DicedInput[i])){
+                        if(Price.get(DicedInput[i])==0.0){
+                            Response += "Sorry, the price of "+DicedInput[i]+" hasn't been registered yet";
+                        }
+                        else {
+                            PriceResult = Pricing.CountCredits(DicedInput[i], QtyConversion);  //calculate the credits needed
+                            Response +=StringTemp+""+DicedInput[i]+" is "+RemoveZero.format(PriceResult)+" Credits";
+                        }
+                    } 
+                    else {
+                        Response += "Sorry, we don't sell that";     //if the goods inputted is not registered
+                    }
                 } 
                 else {
-                    Response = "Sorry, we don't sell that"; 
+                    Response += "Sorry, your number input is invalid";   
                 }
-            } 
+            }
             else {
-                Response = "Sorry, your language input is incorrect"; 
-            } 
+                
+            }
         }
 
-        else if (Words.containsKey(DicedInput[0]) && Input.endsWith("Credits")){	//for adding good's price
+        else if (DicedInput[DicedInput.length-3].equals("is") && Input.endsWith("Credits")){	//for adding good's price
             i=0;
-            while (Words.containsKey(DicedInput[i])){	
-                RomanTemp+=Words.get(DicedInput[i]);
-                StringTemp+=DicedInput[i]+" ";
-                i++;
+            while(i<DicedInput.length-4){	//isSpaceLanguage iteration
+                if(Words.containsKey(DicedInput[i])){
+                    RomanTemp+=Words.get(DicedInput[i]);
+                    StringTemp+=DicedInput[i]+" ";
+                    i++;
+                }
+                else {
+                    Response += "Sorry, the language "+DicedInput[i]+" hasn't been registered yet.\n";
+                    i++;
+                }
             }
-            if(RC.RomanChecker(RomanTemp)==true){
-                QtyConversion=RC.Convert(RomanTemp);
-                if(Price.containsKey(DicedInput[i])){		//if the next string is a good's name
-                    if(DicedInput[DicedInput.length-3].equals("is") && isNumber(DicedInput[DicedInput.length-2]) ){
-                        Price.put(DicedInput[i], Pricing.CountPrice(DicedInput[DicedInput.length-2], QtyConversion)); //inputting the price
-                        Response="";
-                        RomanTemp="";
-                        StringTemp="";
-                    } else {
-                        Response="I have no idea what you are talking about"; 
+            if(!RomanTemp.equals("")){
+                if(RC.RomanChecker(RomanTemp)==true){
+                    QtyConversion=RC.Convert(RomanTemp);
+                    if(Price.containsKey(DicedInput[i])){		//if the next string is a good's name
+                        if(isNumber(DicedInput[DicedInput.length-2]) ){
+                            Pricing.UpdatePrice(DicedInput[i], Pricing.CountPrice(DicedInput[DicedInput.length-2], QtyConversion)); //inputting the price
+                        } else {
+                            Response += "The Credits you inputted is not an arabic number"; 
+                        }
                     }
-		}
-            } 
+                    else {
+                        Response += "Sorry, we don't sell that";
+                    }
+                } 
+                else {
+                    Response += "Sorry, your number input is invalid";
+                }
+            }
             else {
-                Response = "Sorry, your input is incorrect";
+                
             }
 	}
         else {                                                      

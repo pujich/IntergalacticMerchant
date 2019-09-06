@@ -34,7 +34,9 @@ public class PricingTest {
         
         boolean expResult = true;
         boolean result = Pricing.UpdatePrice(Goods, Price);
-        assertEquals(expResult, result);
+        assertEquals(true, Pricing.UpdatePrice("Silver", 1000.0)); 
+        assertEquals(false, Pricing.UpdatePrice("Platinum", 1000.0)); //prints "sorry we dont sell those"
+        assertEquals(true, Pricing.UpdatePrice("Gold", 1000.0)); //prints "sorry we dont sell those"
       
     }
 
@@ -63,11 +65,8 @@ public class PricingTest {
     @Test
     public void testCountCredits() {
         System.out.println("CountCredits");
-        String Goods = "Silver";
-        int Qty = 6;
-        double expResult = 0.0;
-        double result = Pricing.CountCredits(Goods, Qty);
-        assertEquals(expResult, result, 0.0);
+        Pricing.UpdatePrice("Silver", 1000.0);
+        assertEquals(6000.0, Pricing.CountCredits("Silver", 6), 0.0);
      
     }
 
@@ -77,11 +76,8 @@ public class PricingTest {
     @Test
     public void testCountPrice() {
         System.out.println("CountPrice");
-        String Credits = "2000";
-        int Qty =5;
-        double expResult = 400.0;
-        double result = Pricing.CountPrice(Credits, Qty);
-        assertEquals(expResult, result, 0.0);
+
+        assertEquals(400.0, Pricing.CountPrice("2000", 5), 0.0);
    
     }
     

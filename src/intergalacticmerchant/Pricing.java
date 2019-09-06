@@ -25,12 +25,9 @@ public class Pricing {
         if(GoodsPrice.containsKey(Goods)){
             GoodsPrice.replace(Goods, Price);
             valid=true;
-            System.out.println("Price has been put");
         } else { 
             valid=false;
-            System.out.println("Sorry, we don't sell those");
         }
-        
         return valid;
     }
     
